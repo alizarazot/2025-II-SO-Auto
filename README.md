@@ -1,5 +1,21 @@
 # 2025-II-SO-Auto
 
+Utility to check for programs preventing USB ejecting on Windows.
+
+## Usage
+
+To list programs and its PIDs:
+
+```
+os-auto
+```
+
+To check for programs preventing ejecting on a USB (for example unit letter D):
+
+```
+os-auto D
+```
+
 ## Downloading
 
 To download precompiled binary use: https://github.com/alizarazot/2025-II-SO-Auto/releases/download/v0.1.0/os-auto.exe
