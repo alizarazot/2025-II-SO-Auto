@@ -1,5 +1,11 @@
 # 2025-II-SO-Auto
 
+## Downloading
+
+To download precompiled binary use: https://github.com/alizarazot/2025-II-SO-Auto/releases/download/v0.1.0/os-auto.exe
+
+## Building from source
+
 First install Poetry, then to install dependencies use:
 
 ```
