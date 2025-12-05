@@ -6,25 +6,25 @@ from psutil import process_iter, AccessDenied
 def main(args=argv):
     assert len(args) > 0  # A full command line is expected.
 
-    target_letter = None
+    target_path = None
     if len(args) == 2:
-        target_letter = args[1]
+        target_path = args[1]
 
-    if target_letter is None:
+    if target_path is None:
         print("Available Processes:")
 
     offending = []
     for proc in process_iter(["pid", "name", "exe"]):
         name, pid, exe = proc.info["name"], proc.info["pid"], proc.info["exe"]
 
-        if target_letter is None:
+        if target_path is None:
             print(f" - {pid:>5}: {name}")
             continue
 
         if exe is None:
             print(f"Couldn't check process executable: {name} ({pid}).")
 
-        if exe is not None and exe.lower().startswith(target_letter.lower()):
+        if exe is not None and exe.lower().startswith(target_path.lower()):
             print(f"{name} ({pid}) -> {exe}")
             offending.append(proc)
 
@@ -37,8 +37,8 @@ def main(args=argv):
 
         for file in files:
             path = file.path
-            if path.lower().startswith(target_letter.lower()):
-                print(f"{name} ({pid}) -> {file}")
+            if path.lower().startswith(target_path.lower()):
+                print(f"{name} ({pid}) -> {file.path}")
                 offending.append(proc)
 
     if len(offending) != 0:
@@ -48,6 +48,9 @@ def main(args=argv):
         print(f" - {name} ({pid})", end=" ")
         if prompt_ask_agree():
             proc.kill()
+
+    if target_path is not None and len(offending) == 0:
+        print("No offending process was found!")
 
 
 def prompt_ask_agree() -> bool:

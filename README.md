@@ -1,6 +1,6 @@
 # 2025-II-SO-Auto
 
-Utility to check for programs preventing USB ejecting on Windows.
+Utility to check for programs preventing USB ejecting or folder deletion on Windows.
 
 ## Usage
 
@@ -16,9 +16,15 @@ To check for programs preventing ejecting on a USB (for example unit letter D):
 os-auto D
 ```
 
+You can also check a path:
+
+```
+os-auto C:\Users\You\Documents\tmp
+```
+
 ## Downloading
 
-To download precompiled binary use: https://github.com/alizarazot/2025-II-SO-Auto/releases/download/v0.1.0/os-auto.exe
+To download precompiled binary use: https://github.com/alizarazot/2025-II-SO-Auto/releases/download/v0.1.1/os-auto.exe
 
 ## Building from source
 
